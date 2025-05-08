@@ -1,0 +1,42 @@
+<!-- Tabs Navigation -->
+<div class="tabs">
+  <button [class.active]="selectedTab === 'addShipment'" (click)="changeTab('addShipment')">New Shipment</button>
+  <button [class.active]="selectedTab === 'viewShipments'" (click)="changeTab('viewShipments')">Shipments List</button>
+</div>
+
+<!-- New Shipment Form (Add Shipment) -->
+<div *ngIf="selectedTab === 'addShipment'">
+  <app-add-shipment (shipmentAdded)="loadShipments()"></app-add-shipment>
+</div>
+
+<!-- Shipments List -->
+<div *ngIf="selectedTab === 'viewShipments'">
+  <div class="shipments-table-container">
+    <table *ngIf="!loading" class="shipments-table">
+      <thead>
+        <tr>
+          <th>Tracking ID</th>
+          <th>Phone</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shipment of shipments">
+          <td>{{ shipment.trackingId }}</td>
+          <td>{{ shipment.phoneNumber }}</td>
+          <td>{{ shipment.description }}</td>
+          <td>{{ shipment.status.name }}</td>
+          <td>
+            <button *ngIf="shipment.status.name === 'Ready to Pick Up'" (click)="onCheckout(shipment.id)">Checkout</button>
+            <button *ngIf="shipment.status.name === 'Out for Delivery'" (click)="onDeliver(shipment.id)">Deliver</button>
+            <button (click)="onDelete(shipment.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="loading">Loading...</p>
+</div>

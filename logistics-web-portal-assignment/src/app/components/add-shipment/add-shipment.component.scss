@@ -1,0 +1,87 @@
+@use '/src/styles.scss';
+
+
+.container {
+  @include center-flex;
+  padding: $padding-base;
+}
+
+
+:host {
+    display: block;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  
+    label {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      display: block;
+      color: #333;
+    }
+  
+    input,
+    textarea,
+    select {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+  
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+      }
+    }
+  
+    button {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:disabled {
+        background-color: #999;
+        cursor: not-allowed;
+      }
+  
+      &:hover:not(:disabled) {
+        background-color: #0056b3;
+      }
+    }
+  
+    .error {
+      color: #e63946;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+  }
+  
+  p {
+    &.success {
+      color: #2a9d8f;
+      font-weight: bold;
+    }
+  
+    &.error {
+      color: #e63946;
+      font-weight: bold;
+    }
+  }
+  

@@ -1,0 +1,51 @@
+<form [formGroup]="shipmentForm" (ngSubmit)="onSubmit()">
+    <!-- Tracking ID -->
+    <div>
+      <label for="trackingId">Tracking ID:</label>
+      <input id="trackingId" formControlName="trackingId" />
+      <div *ngIf="shipmentForm.controls['trackingId'].invalid && shipmentForm.controls['trackingId'].touched" style="color: red;">
+        Tracking ID is required.
+      </div>
+    </div>
+  
+    <!-- Phone Number -->
+    <div>
+      <label for="phoneNumber">Phone Number:</label>
+      <input id="phoneNumber" formControlName="phoneNumber" />
+      <div *ngIf="shipmentForm.controls['phoneNumber'].invalid && shipmentForm.controls['phoneNumber'].touched" style="color: red;">
+        Invalid phone number format.
+      </div>
+    </div>
+  
+    <!-- Description -->
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div *ngIf="shipmentForm.controls['description'].invalid && shipmentForm.controls['description'].touched" style="color: red;">
+        Description is required.
+      </div>
+    </div>
+  
+    <!-- Status -->
+    <div>
+      <label for="status">Status:</label>
+      <select id="status" formControlName="status">
+        <option value="" disabled>Select Status</option> 
+        <option *ngFor="let status of statuses" [value]="status.id">
+          {{ status.name }}
+        </option>
+      </select>
+      <div *ngIf="shipmentForm.controls['status'].invalid && shipmentForm.controls['status'].touched" style="color: red;">
+        Status is required.
+      </div>
+    </div>
+  
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="shipmentForm.invalid || submitting">
+      {{ submitting ? 'Submitting...' : 'Add Shipment' }}
+    </button>
+  </form>
+  
+  <!-- <p *ngIf="successMsg" style="color: green;">{{ successMsg }}</p> -->
+  <p *ngIf="errorMsg" style="color: red;">{{ errorMsg }}</p>
+  
