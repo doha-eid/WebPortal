@@ -6,12 +6,6 @@ This is the **frontend** part of the Logistics Web Portal, developed using Angul
 
 ---
 
-## 📸 Preview
-
-![screenshot](screenshot.png)  
-> _Add a screenshot of your UI here if available._
-
----
 
 ## 🛠️ Tech Stack
 
@@ -39,15 +33,16 @@ src/
 
 ## 🚀 Getting Started
 
-### 1. Clone the repository
-
-```bash
+### 1. Clone the repository ```bash
 git clone https://github.com/doha-eid/logistics-web-portal-frontend.git
 cd logistics-web-portal-frontend
-### 2.  Install dependencies
+
+### 2. Install dependencies
 npm install
 ### 3. Run the development server
 ng serve
+
+
  
 
 
